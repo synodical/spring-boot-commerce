@@ -1,2 +1,5 @@
-package com.shop.constant;public class ItemSellStatus {
+package com.shop.constant;
+
+public enum ItemSellStatus {
+    SELL, SOLD_OUT
 }
