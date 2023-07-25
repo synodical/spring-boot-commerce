@@ -49,4 +49,10 @@ public class Item {
         this.regTime = regTime;
         this.updateTime = updateTime;
     }
+
+    public void removeStock(int count) {
+    }
+
+    public void addStock(int count) {
+    }
 }
