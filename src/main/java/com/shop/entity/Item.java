@@ -2,10 +2,7 @@ package com.shop.entity;
 
 import com.shop.constant.ItemSellStatus;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
 @Entity
@@ -13,6 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class Item {
     @Id
     @Column(name = "item_id")
@@ -38,10 +36,6 @@ public class Item {
     private LocalDateTime regTime;
 
     private LocalDateTime updateTime;
-
-    // 기본 생성자
-    public Item() {
-    }
 
     @Builder
     public Item(Long id, String itemNm, int price, int stockNumber, String itemDetail,
