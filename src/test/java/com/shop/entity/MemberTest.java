@@ -1,9 +1,6 @@
 package com.shop.entity;
 
 import com.shop.repository.MemberRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.persistence.PersistenceContext;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +8,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.annotation.Transactional;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.PersistenceContext;
 
 @SpringBootTest
 @Transactional
-@TestPropertySource(locations="classpath:application-test.yml")
+@TestPropertySource(locations="classpath:application-test.properties")
 public class MemberTest {
 
     @Autowired

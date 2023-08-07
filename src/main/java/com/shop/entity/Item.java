@@ -1,58 +1,47 @@
 package com.shop.entity;
 
 import com.shop.constant.ItemSellStatus;
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-import java.time.LocalDateTime;
+import jakarta.persistence.*;
+import com.shop.dto.ItemFormDto;
+
 @Entity
-@Table(name = "item")
+@Table(name="item")
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor
 public class Item extends BaseEntity {
+
     @Id
-    @Column(name = "item_id")
+    @Column(name="item_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long id;       //상품 코드
 
     @Column(nullable = false, length = 50)
-    private String itemNm;
+    private String itemNm; //상품명
+
+    @Column(name="price", nullable = false)
+    private int price; //가격
 
     @Column(nullable = false)
-    private int price;
-
-    @Column(nullable = false)
-    private int stockNumber;
+    private int stockNumber; //재고수량
 
     @Lob
     @Column(nullable = false)
-    private String itemDetail;
+    private String itemDetail; //상품 상세 설명
 
     @Enumerated(EnumType.STRING)
-    private ItemSellStatus itemSellStatus;
+    private ItemSellStatus itemSellStatus; //상품 판매 상태
 
-    private LocalDateTime regTime;
-
-    private LocalDateTime updateTime;
-
-    @Builder
-    public Item(Long id, String itemNm, int price, int stockNumber, String itemDetail,
-                ItemSellStatus itemSellStatus, LocalDateTime regTime, LocalDateTime updateTime) {
-        this.id = id;
-        this.itemNm = itemNm;
-        this.price = price;
-        this.stockNumber = stockNumber;
-        this.itemDetail = itemDetail;
-        this.itemSellStatus = itemSellStatus;
-        this.regTime = regTime;
-        this.updateTime = updateTime;
+    public void updateItem(ItemFormDto itemFormDto){
+        this.itemNm = itemFormDto.getItemNm();
+        this.price = itemFormDto.getPrice();
+        this.stockNumber = itemFormDto.getStockNumber();
+        this.itemDetail = itemFormDto.getItemDetail();
+        this.itemSellStatus = itemFormDto.getItemSellStatus();
     }
 
-    public void removeStock(int count) {
-    }
-
-    public void addStock(int count) {
-    }
 }

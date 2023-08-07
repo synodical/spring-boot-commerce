@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @Transactional
-@TestPropertySource(locations="classpath:application-test.yml")
+@TestPropertySource(locations="classpath:application-test.properties")
 
 class CartTest {
 
